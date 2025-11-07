@@ -11,7 +11,7 @@ const portfolioData = {
     email: "sivabalaji2717@outlook.com",
     github: "https://github.com/Siva-0317",
     linkedin: "https://linkedin.com/in/sivakumarbalaji",
-    resume: "/SIVAKUMAR BALAJI.pdf"
+    resume: "projects/SIVAKUMAR BALAJI.pdf"
   },
   
   projects: [
