@@ -11,7 +11,7 @@ const portfolioData = {
     email: "sivabalaji2717@outlook.com",
     github: "https://github.com/Siva-0317",
     linkedin: "https://linkedin.com/in/sivakumarbalaji",
-    resume: "/public/projects/SIVAKUMAR BALAJI.pdf"
+    resume: "https://drive.google.com/file/d/1qcRSr0xuBrqZY1DNvu6js2BALKnSDkTO/view?usp=sharing"
   },
   
   projects: [
