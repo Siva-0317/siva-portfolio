@@ -1,3 +1,6 @@
+// ============================================
+// PLACEHOLDER DATA - REPLACE WITH YOUR OWN
+// ============================================
 
 const portfolioData = {
   bio: {
