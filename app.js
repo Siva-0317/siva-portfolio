@@ -20,28 +20,28 @@ const portfolioData = {
       title: "JUNE - Journey to Understand, Navigate, and Explore",
       tags: ["Whisper", "LLM", "MySQL"],
       description: "A desktop chatbot for Easwari Engineering College Central Library, featuring voice recognition (Whisper), text-to-speech, LLM-powered general chat, and book search via MySQL.",
-      image: "/projects/June.jpg",
+      image: "/projects/June.jpg", // Make sure this exists at /public/projects/June.jpg
       link: "https://june-eec.vercel.app/",
       repo: "https://github.com/Siva-0317/Lib-Chatbot",
-      details: " Developed a desktop library chatbot with voice input (Whisper), text‑to‑speech, local GGUF LLMs and MySQL‑backed book search and conversational model, with offline‑capable Python GUI."
+      details: "Developed a desktop library chatbot with voice input (Whisper), text‑to‑speech, local GGUF LLMs and MySQL‑backed book search and conversational model, with offline‑capable Python GUI."
     },
     {
       id: 2,
       title: "AI-Powered Farming System with Disease Detection and Fertilizer Optimization",
-      tags: ["Transformers, Computer Vision, RAG"],
+      tags: ["Transformers", "Computer Vision", "RAG"],
       description: "Developed an IoT + AI system for automated irrigation, crop disease detection (ResNet-50 - fine-tuned), and fertilizer recommendation (BERT & BART fine-tuned models).",
+      image: null, // No image for this project
+      link: null, // No live demo
       repo: "https://github.com/Siva-0327/AI-Powered-Farming-System-with-Disease-Detection-and-Fertilizer-Optimization",
-      details: "This project integrates IoT and AI to modernize traditional farming practices. It features a smart irrigation control mechanism, \
-      crop disease detection using image processing, and a fertilizer recommendation system — all designed to improve agricultural efficiency and sustainability.\
-      Crop Disease Detection (ResNet-50) A fine-tuned ResNet-50 CNN model classifies crop diseases using leaf images. Real-time image capture from USB Camera or Raspberry Pi.\
-      Deployed on Django backend with REST API for prediction.\
-      Fertilizer Recommendation (NLP + Tabular) XGBoost model predicts required fertilizer quantity based on crop, soil, and weather."
+      details: "This project integrates IoT and AI to modernize traditional farming practices. It features a smart irrigation control mechanism, crop disease detection using image processing, and a fertilizer recommendation system — all designed to improve agricultural efficiency and sustainability. Crop Disease Detection (ResNet-50) A fine-tuned ResNet-50 CNN model classifies crop diseases using leaf images. Real-time image capture from USB Camera or Raspberry Pi. Deployed on Django backend with REST API for prediction. Fertilizer Recommendation (NLP + Tabular) XGBoost model predicts required fertilizer quantity based on crop, soil, and weather."
     },
     {
       id: 3,
       title: "Smart ML-IoT Based Irrigation Control System",
-      tags: ["Machine Learning, Regression Analysis, IoT, MongoDB, Django"],
+      tags: ["Machine Learning", "Regression Analysis", "IoT", "MongoDB", "Django"],
       description: "Built an ML + IoT-based (Feed-Forward Neural Network & XGBoost) smart irrigation solution to optimize water usage using real-time soil and weather data.",
+      image: null, // No image for this project
+      link: null, // No live demo
       repo: "https://github.com/Siva-0327/Smart-ML-IoT-Based-Irrigation-Control-System",
       details: "This project presents a smart irrigation solution that integrates IoT sensors, Machine Learning models, and real-time weather forecasting to intelligently control irrigation for agricultural fields. The system ensures optimal water usage, reducing waste and increasing crop productivity."
     },
@@ -50,9 +50,10 @@ const portfolioData = {
       title: "Local LLM Workbench",
       tags: ["LLMs", "PySide6", "llama-cpp-python"],
       description: "A lightweight Python desktop application for evaluating and comparing local LLM models based on specific tasks.",
+      image: null, // No image for this project
+      link: null, // No live demo
       repo: "https://github.com/Siva-0327/llm-evaluator",
-      details: "This project presents the development of a Purpose-Driven Local LLM Evaluator, a desktop application designed to systematically assess and compare Large Language Models (LLMs)\
-      running locally on consumer hardware."
+      details: "This project presents the development of a Purpose-Driven Local LLM Evaluator, a desktop application designed to systematically assess and compare Large Language Models (LLMs) running locally on consumer hardware."
     }
   ],
   
@@ -63,6 +64,7 @@ const portfolioData = {
       company: "Easwari Engineering College",
       period: "2025 - Present",
       description: "Spearheaded the organization of the first-ever hackathon for the Computer Science department, setting a precedent for future innovation-driven events. Successfully led the planning and execution of a 24-hour hackathon and an industry summit that brought together students, professionals, and thought leaders. Oversaw end-to-end logistics, curated problem statements, coordinated with sponsors and speakers, and ensured seamless event delivery. Played a key role in fostering a vibrant tech community through symposiums, workshops, and networking initiatives that bridged academia and industry.",
+      link: null // No link for this experience
     },
     {
       id: 2,
@@ -108,7 +110,7 @@ const portfolioData = {
       items: [
         { name: "Raspberry Pi", level: 85 },
         { name: "Arduino & Microcontrollers", level: 80 },
-        { name: "3D Modeling", level: 75 },
+        { name: "3D Modeling", level: 75 }
       ]
     }
   ],
@@ -128,6 +130,11 @@ const portfolioData = {
 class Starfield {
   constructor() {
     this.canvas = document.getElementById('starfield');
+    if (!this.canvas) {
+      console.error('Starfield canvas not found');
+      return;
+    }
+    
     this.ctx = this.canvas.getContext('2d');
     this.stars = [];
     this.shootingStars = [];
@@ -147,7 +154,11 @@ class Starfield {
   
   resize() {
     this.canvas.width = window.innerWidth;
-    this.canvas.height = document.documentElement.scrollHeight;
+    this.canvas.height = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight,
+      window.innerHeight
+    );
   }
   
   init() {
@@ -231,17 +242,26 @@ class Starfield {
 }
 
 // ============================================
-// RENDER FUNCTIONS
+// RENDER FUNCTIONS (FIXED)
 // ============================================
-
-// Update the renderProjects function
 
 function renderProjects() {
   const grid = document.getElementById('projectsGrid');
+  if (!grid) {
+    console.error('Projects grid element not found');
+    return;
+  }
+  
   grid.innerHTML = portfolioData.projects.map(project => `
     <div class="project-card" data-project-id="${project.id}">
       ${project.image ? 
-        `<img src="${project.image}" alt="${project.title}" class="project-image">` : 
+        `<img 
+          src="${project.image}" 
+          alt="${project.title}" 
+          class="project-image"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+        <div class="project-image-placeholder" style="display:none;">${project.title}</div>` : 
         `<div class="project-image-placeholder">${project.title}</div>`
       }
       <div class="project-tags">
@@ -250,8 +270,8 @@ function renderProjects() {
       <h3 class="project-title">${project.title}</h3>
       <p class="project-description">${project.description}</p>
       <div class="project-links">
-        ${project.link ? `<a href="${project.link}" target="_blank" class="project-link">Live Demo →</a>` : ''}
-        <a href="${project.repo}" target="_blank" class="project-link">GitHub →</a>
+        ${project.link ? `<a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-link">Live Demo →</a>` : ''}
+        ${project.repo ? `<a href="${project.repo}" target="_blank" rel="noopener noreferrer" class="project-link">GitHub →</a>` : ''}
       </div>
     </div>
   `).join('');
@@ -261,11 +281,19 @@ function renderProjects() {
 
 function renderExperience() {
   const timeline = document.getElementById('experienceTimeline');
+  if (!timeline) {
+    console.error('Experience timeline element not found');
+    return;
+  }
+  
   timeline.innerHTML = portfolioData.experience.map(exp => `
     <div class="experience-item">
       <div class="experience-period">${exp.period}</div>
       <h3 class="experience-role">${exp.role}</h3>
-      <a href="${exp.link}" target="_blank" class="experience-company">${exp.company}</a>
+      ${exp.link ? 
+        `<a href="${exp.link}" target="_blank" rel="noopener noreferrer" class="experience-company">${exp.company}</a>` : 
+        `<div class="experience-company">${exp.company}</div>`
+      }
       <p class="experience-description">${exp.description}</p>
     </div>
   `).join('');
@@ -275,6 +303,11 @@ function renderExperience() {
 
 function renderSkills() {
   const grid = document.getElementById('skillsGrid');
+  if (!grid) {
+    console.error('Skills grid element not found');
+    return;
+  }
+  
   grid.innerHTML = portfolioData.skills.map(category => `
     <div class="skill-category">
       <h3 class="skill-category-title">${category.category}</h3>
@@ -315,6 +348,8 @@ function observeElements(selector) {
             }, 200);
           });
         }
+        
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
@@ -336,12 +371,17 @@ function initNavigation() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+      const targetId = this.getAttribute('href');
+      const target = document.querySelector(targetId);
+      
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         
         // Close mobile menu
-        document.getElementById('mobileMenu').classList.remove('active');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) {
+          mobileMenu.classList.remove('active');
+        }
       }
     });
   });
@@ -372,16 +412,18 @@ function initNavigation() {
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   
-  mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-  });
-  
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.navbar') && !e.target.closest('.mobile-menu')) {
-      mobileMenu.classList.remove('active');
-    }
-  });
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.navbar') && !e.target.closest('.mobile-menu')) {
+        mobileMenu.classList.remove('active');
+      }
+    });
+  }
 }
 
 // ============================================
@@ -390,19 +432,28 @@ function initNavigation() {
 
 function initContactForm() {
   const form = document.getElementById('contactForm');
+  if (!form) {
+    console.warn('Contact form not found');
+    return;
+  }
+  
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    const formData = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      message: document.getElementById('message').value
-    };
+    const name = document.getElementById('name')?.value;
+    const email = document.getElementById('email')?.value;
+    const message = document.getElementById('message')?.value;
     
-    // PLACEHOLDER: Replace this with your actual form handling
-    // You can use services like Formspree, EmailJS, or your own backend
-    console.log('Form submitted:', formData);
-    alert('Thanks for reaching out! This is a placeholder. Please integrate with a form service like Formspree or EmailJS.');
+    // Create mailto link with pre-filled content
+    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    const mailtoLink = `mailto:${portfolioData.contact.email}?subject=${subject}&body=${body}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+    
+    // Optional: Show success message
+    alert('Opening your email client... If it doesn\'t open, please email directly at ' + portfolioData.contact.email);
     
     form.reset();
   });
@@ -413,18 +464,31 @@ function initContactForm() {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize starfield
-  new Starfield();
-  
-  // Render content
-  renderProjects();
-  renderExperience();
-  renderSkills();
-  
-  // Initialize features
-  initNavigation();
-  initContactForm();
-  
-  console.log('%c🌌 Portfolio loaded successfully! 🌌', 'color: #6ae2ff; font-size: 16px; font-weight: bold;');
-  console.log('%c📝 Remember to replace all PLACEHOLDER content with your own!', 'color: #b388ff; font-size: 14px;');
+  try {
+    // Initialize starfield
+    new Starfield();
+    
+    // Render content
+    renderProjects();
+    renderExperience();
+    renderSkills();
+    
+    // Initialize features
+    initNavigation();
+    initContactForm();
+    
+    console.log('%c🌌 Portfolio loaded successfully! 🌌', 'color: #6ae2ff; font-size: 16px; font-weight: bold;');
+    console.log('%cPortfolio by ' + portfolioData.bio.name, 'color: #b388ff; font-size: 14px;');
+  } catch (error) {
+    console.error('Error initializing portfolio:', error);
+  }
+});
+
+// Handle window resize for starfield
+window.addEventListener('resize', () => {
+  const starfield = document.getElementById('starfield');
+  if (starfield) {
+    // Trigger resize in Starfield class
+    window.dispatchEvent(new Event('resize'));
+  }
 });
