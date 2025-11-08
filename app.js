@@ -22,7 +22,7 @@ const portfolioData = {
       description: "A desktop chatbot for Easwari Engineering College Central Library, featuring voice recognition (Whisper), text-to-speech, LLM-powered general chat, and book search via MySQL.",
       image: "/projects/June.jpg",
       link: "https://june-eec.vercel.app/",
-      repo: "https://github.com/Siva-0327/Lib-Chatbot",
+      repo: "https://github.com/Siva-0317/Lib-Chatbot",
       details: " Developed a desktop library chatbot with voice input (Whisper), text‑to‑speech, local GGUF LLMs and MySQL‑backed book search and conversational model, with offline‑capable Python GUI."
     },
     {
