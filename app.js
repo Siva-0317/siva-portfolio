@@ -30,7 +30,7 @@ const portfolioData = {
       title: "AI-Powered Farming System with Disease Detection and Fertilizer Optimization",
       tags: ["Transformers", "Computer Vision", "RAG"],
       description: "Developed an IoT + AI system for automated irrigation, crop disease detection (ResNet-50 - fine-tuned), and fertilizer recommendation (BERT & BART fine-tuned models).",
-      image: null, // No image for this project
+      image: "https://res.cloudinary.com/dy0pxlrq5/image/upload/v1762621298/generated-image_3_oc5e29.jpg", // No image for this project
       link: null, // No live demo
       repo: "https://github.com/Siva-0327/AI-Powered-Farming-System-with-Disease-Detection-and-Fertilizer-Optimization",
       details: "This project integrates IoT and AI to modernize traditional farming practices. It features a smart irrigation control mechanism, crop disease detection using image processing, and a fertilizer recommendation system — all designed to improve agricultural efficiency and sustainability. Crop Disease Detection (ResNet-50) A fine-tuned ResNet-50 CNN model classifies crop diseases using leaf images. Real-time image capture from USB Camera or Raspberry Pi. Deployed on Django backend with REST API for prediction. Fertilizer Recommendation (NLP + Tabular) XGBoost model predicts required fertilizer quantity based on crop, soil, and weather."
@@ -40,7 +40,7 @@ const portfolioData = {
       title: "Smart ML-IoT Based Irrigation Control System",
       tags: ["Machine Learning", "Regression Analysis", "IoT", "MongoDB", "Django"],
       description: "Built an ML + IoT-based (Feed-Forward Neural Network & XGBoost) smart irrigation solution to optimize water usage using real-time soil and weather data.",
-      image: null, // No image for this project
+      image: "https://res.cloudinary.com/dy0pxlrq5/image/upload/v1762621429/generated-image_4_dcvuvt.jpg", // No image for this project
       link: null, // No live demo
       repo: "https://github.com/Siva-0327/Smart-ML-IoT-Based-Irrigation-Control-System",
       details: "This project presents a smart irrigation solution that integrates IoT sensors, Machine Learning models, and real-time weather forecasting to intelligently control irrigation for agricultural fields. The system ensures optimal water usage, reducing waste and increasing crop productivity."
@@ -50,7 +50,7 @@ const portfolioData = {
       title: "Local LLM Workbench",
       tags: ["LLMs", "PySide6", "llama-cpp-python"],
       description: "A lightweight Python desktop application for evaluating and comparing local LLM models based on specific tasks.",
-      image: null, // No image for this project
+      image: "https://res.cloudinary.com/dy0pxlrq5/image/upload/v1762621635/Screenshot_2025-10-05_210955_hhcawg.png", // No image for this project
       link: null, // No live demo
       repo: "https://github.com/Siva-0327/llm-evaluator",
       details: "This project presents the development of a Purpose-Driven Local LLM Evaluator, a desktop application designed to systematically assess and compare Large Language Models (LLMs) running locally on consumer hardware."
